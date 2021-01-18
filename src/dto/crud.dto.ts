@@ -1,8 +1,14 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { IsString, MinLength } from 'class-validator';
 
 export class CrudDto {
-  @ApiProperty()
+  @ApiProperty({
+    description: 'CRUD message content',
+  })
+  @MinLength(5)
   @IsString()
   public message!: string;
+
+  @ApiPropertyOptional()
+  public id?: string;
 }

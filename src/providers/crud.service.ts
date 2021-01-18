@@ -29,7 +29,7 @@ export class CrudService {
 
   async updateCrud(id: string, data: Partial<ICrud>): Promise<ICrud> {
     return {
-      ...data,
+      id,
       message: data.message || `Invalid data to update crud #${id}`
     };
   }
