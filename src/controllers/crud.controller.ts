@@ -12,7 +12,7 @@ export class CrudController {
   }
 
   @Get('/:id')
-  getCrud(@Param('id') id: string) {
+  getCrud(@Param('id') id: number) {
     return this.crudService.getCrud(id);
   }
 
@@ -25,7 +25,7 @@ export class CrudController {
 
   @Patch('/:id')
   updateCrud(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() crudDto: CrudDto
   ) {
     return this.crudService.updateCrud(id, crudDto);

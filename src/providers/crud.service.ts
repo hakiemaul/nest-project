@@ -1,40 +1,36 @@
 import { Injectable } from '@nestjs/common';
-
-export interface ICrud {
-  message: string;
-  id?: string;
-}
+import { CrudDto } from 'src/dto/crud.dto';
 
 @Injectable()
 export class CrudService {
-  async getCruds(): Promise<ICrud> {
+  async getCruds(): Promise<CrudDto> {
     return {
       message: `All the cruds`
     };
   }
 
-  async getCrud(id: string): Promise<ICrud> {
+  async getCrud(id: number): Promise<CrudDto> {
     return {
       message: `Specific crud #${id}`,
       id
     };
   }
 
-  async createCrud(data: Partial<ICrud>): Promise<ICrud> {
+  async createCrud(data: Partial<CrudDto>): Promise<CrudDto> {
     return {
       ...data,
       message: data.message || 'Invalid data'
     };
   }
 
-  async updateCrud(id: string, data: Partial<ICrud>): Promise<ICrud> {
+  async updateCrud(id: number, data: Partial<CrudDto>): Promise<CrudDto> {
     return {
       id,
       message: data.message || `Invalid data to update crud #${id}`
     };
   }
 
-  async deleteCrud(id: string): Promise<string> {
+  async deleteCrud(id: number): Promise<string> {
     return `Crud #${id} successfully deleted`;
   }
 }

@@ -10,5 +10,5 @@ export class CrudDto {
   public message!: string;
 
   @ApiPropertyOptional()
-  public id?: string;
+  public id?: number;
 }
