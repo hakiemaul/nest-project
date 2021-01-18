@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { CrudDto } from 'src/dto/crud.dto';
 import { CrudService } from 'src/providers/crud.service';
 
 @Controller('crud')
@@ -17,20 +18,16 @@ export class CrudController {
 
   @Post()
   createCrud(
-    @Body('message') message: string
+    @Body() crudDto: CrudDto
   ) {
-    return this.crudService.createCrud({
-        message
-    });
+    return this.crudService.createCrud(crudDto);
   }
 
   @Patch('/:id')
   updateCrud(
     @Param('id') id: string,
-    @Body('message') message: string
+    @Body() crudDto: CrudDto
   ) {
-    return this.crudService.updateCrud(id, {
-        message
-    });
+    return this.crudService.updateCrud(id, crudDto);
   }
 }
